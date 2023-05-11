@@ -16,7 +16,11 @@ const CreatePost = () => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+<<<<<<< HEAD
   const handleSubmit = () => { };
+=======
+  const handleSubmit = () => {};
+>>>>>>> e1a29180cfb8e0b65b1a9547a1b41ba165aa0e1a
   const handleSurpriseMe = () => {
     const randomPrompt = getRandomPrompt(form.prompt);
     setForm({ ...form, prompt: randomPrompt });
@@ -25,6 +29,7 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
+<<<<<<< HEAD
         const response = await fetch('http://localhost:8080/api/v1/dalle', {
           method: 'POST',
           headers: {
@@ -39,14 +44,33 @@ const CreatePost = () => {
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
       } catch (err) {
         alert(err);
+=======
+        const response = await fetch("http://localhost:8080/api/v1/dalle", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt: form.prompt }),
+        });
+        const data = await response.json();
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (error) {
+        alert(error);
+>>>>>>> e1a29180cfb8e0b65b1a9547a1b41ba165aa0e1a
       } finally {
         setGeneratingImg(false);
       }
     } else {
+<<<<<<< HEAD
       alert('Please provide proper prompt');
     }
   };
 
+=======
+      alert("please enter a Prompt");
+    }
+  };
+>>>>>>> e1a29180cfb8e0b65b1a9547a1b41ba165aa0e1a
   return (
     <section className="max-w-7xl mx-auto">
       <div>
